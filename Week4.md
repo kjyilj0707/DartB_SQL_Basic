@@ -224,8 +224,6 @@ SELECT region, order_date, COUNT(*) FROM orders GROUP BY region, order_date  -- 
 - IN은 완전히 똑같은 값인지 확인하는 것 → OPTIONS처럼 콤마로 이어진 문자열엔 안 맞음, "포함 여부"를 볼 땐 LIKE
 - IN 뒤에는 반드시 괄호 필요: IN ('네비게이션')
 
-```
-
 ![alt text](image-8.png)
 
 ## 🧩 문제 2
@@ -236,7 +234,6 @@ SELECT region, order_date, COUNT(*) FROM orders GROUP BY region, order_date  -- 
 - 문제에서 요구한 조건: FOOD_FACTORY 테이블에서 주소(ADDRESS)에 '강원도'가 포함된 공장의 FACTORY_ID, FACTORY_NAME, ADDRESS 조회
 - WHERE 절로 옮긴 방식:WHERE ADDRESS LIKE "%강원도%" (ADDRESS 문자열 안에 '강원도'가 포함되어 있는지 확인)
 - 정렬 기준: ID기준 오름차순. -> ORDER BY FACTORY_ID (오름차순이 기본 패시브)
-```
 
 ![alt text](image-10.png)
 
@@ -253,9 +250,6 @@ SELECT region, order_date, COUNT(*) FROM orders GROUP BY region, order_date  -- 
 - 조건이 여러 개면 WHERE에 각각 적고 AND로 연결한다
 - ANIMAL_TYPE = 'Dog' 조건을 빼먹어서 개가 아닌 동물까지 다 나와버림 → 문제 설명에서 조건을 하나씩 체크리스트처럼 뽑아보는 습관 필요
 - ORDER BY에 컬럼을 콤마로 여러 개 나열하면 1차 기준이 같을 때만 2차 기준으로 다시 정렬함
-
-
-```
 
 ![alt text](image-11.png)
 
@@ -274,8 +268,6 @@ SELECT region, order_date, COUNT(*) FROM orders GROUP BY region, order_date  -- 
 - WHERE는 GROUP BY 전에 "행"을 거를 때, HAVING은 GROUP BY 후에 "그룹"을 거를 때 사용
 - 전체 데이터를 조건 없이 그냥 그룹별로 나눠서 세는 경우엔 WHERE도 HAVING도 필요 없음
 - ORDER BY에는 SELECT에서 만든 별칭(CATEGORY)을 그대로 써도 됨
-
-```
 
 ![alt text](image-12.png)
 
