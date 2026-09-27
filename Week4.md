@@ -218,7 +218,6 @@ SELECT region, order_date, COUNT(*) FROM orders GROUP BY region, order_date  -- 
 - 정렬 기준:CAR_ID 내림차순 (ORDER BY CAR_ID DESC)
 
 어려웠던 점:
-
 - CAST가 필요하다고 생각했는데 OPTIONS는 이미 VARCHAR(255)라서 CAST 자체가 불필요했음
 - CAST를 쓰더라도 STRING이 아니라 CHAR (MySQL 문법) — STRING은 BigQuery 문법
 - CAST는 "값이 오는 자리"에만 넣을 수 있음 (SELECT 컬럼, WHERE 조건 안) → FROM엔 못 넣음
@@ -234,8 +233,6 @@ SELECT region, order_date, COUNT(*) FROM orders GROUP BY region, order_date  -- 
 문제 링크: [강원도에 위치한 생산공장 목록 출력하기](https://school.programmers.co.kr/learn/courses/30/lessons/131112)
 
 풀이 과정:
-
-```
 - 문제에서 요구한 조건: FOOD_FACTORY 테이블에서 주소(ADDRESS)에 '강원도'가 포함된 공장의 FACTORY_ID, FACTORY_NAME, ADDRESS 조회
 - WHERE 절로 옮긴 방식:WHERE ADDRESS LIKE "%강원도%" (ADDRESS 문자열 안에 '강원도'가 포함되어 있는지 확인)
 - 정렬 기준: ID기준 오름차순. -> ORDER BY FACTORY_ID (오름차순이 기본 패시브)
@@ -248,8 +245,6 @@ SELECT region, order_date, COUNT(*) FROM orders GROUP BY region, order_date  -- 
 문제 링크: [이름에 el이 들어가는 동물 찾기](https://school.programmers.co.kr/learn/courses/30/lessons/59047)
 
 풀이 과정:
-
-```
 - 찾으려는 문자열 패턴:NAME에 'EL'이 포함된 경우 (LIKE '%EL%')
 - 대소문자를 처리한 방식:LIKE '%EL%'만으로 el/El/EL 다 잡힘 (MySQL의 경우 기본적으로 대소문자 구분을 안함. )
 - 정렬 기준:NAME 오름차순, 이름이 같으면 ANIMAL_ID 오름차순 (ORDER BY NAME, ANIMAL_ID)
@@ -269,14 +264,11 @@ SELECT region, order_date, COUNT(*) FROM orders GROUP BY region, order_date  -- 
 문제 링크: [카테고리 별 상품 개수 구하기](https://school.programmers.co.kr/learn/courses/30/lessons/131529)
 
 풀이 과정:
-
-```
 - 추출한 문자열 범위:PRODUCT_CODE의 앞 2자리 → LEFT(PRODUCT_CODE, 2)
 - 그룹화 기준: LEFT(PRODUCT_CODE, 2) (SELECT에서 쓴 표현식과 동일하게 GROUP BY에도 사용)
 - 정렬 기준:CATEGORY(별칭) 오름차순
 
 배운것들:
-
 - 문자열 앞 N글자를 뽑을 때는 LEFT(문자열, 개수) 사용 (SUBSTRING(문자열, 1, 개수)도 동일)
 - COUNT(*)는 괄호 필수 — COUNT * 는 문법 오류
 - WHERE는 GROUP BY 전에 "행"을 거를 때, HAVING은 GROUP BY 후에 "그룹"을 거를 때 사용
@@ -292,13 +284,11 @@ SELECT region, order_date, COUNT(*) FROM orders GROUP BY region, order_date  -- 
 # 4️⃣ 이번 주 회고
 
 ```
-1. 쿼리 작성 흐름을 잡을 때 도움이 된 방법:
-2. 타입 변환이나 문자열 처리에서 조심해야 할 점:
-3. 앞으로 문제 풀이 때 먼저 확인할 것:
+1. 쿼리 작성 흐름을 잡을 때 도움이 된 방법:SQL부터 치지 않고 쿼리 작성 탬플릿이용해서 "목표/계산방법/테이블/조건"을 글로 먼저 정리한 뒤 SELECT-FROM-WHERE-GROUP BY 순서로 옮기기
+2. 타입 변환이나 문자열 처리에서 조심해야 할 점:이미 맞는 타입(VARCHAR 등)에 불필요하게 CAST 쓰지 않기 DB마다 타입 이름이 다름(STRING은 BigQuery, CHAR는 MySQL), "포함 여부"는 LIKE '%키워드%'로 확인
+3. 앞으로 문제 풀이 때 먼저 확인할 것:문제 조건이 몇 개인지 하나씩 체크리스트로 뽑기(AND로 연결), 정렬 기준(1차/2차) 명시 여부, WHERE(행 필터링)와 HAVING(그룹 필터링)/GROUP BY 필요 여부 구분
 ```
 
 수고하셨습니다!
-
-
 
 
