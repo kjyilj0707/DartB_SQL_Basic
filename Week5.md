@@ -148,7 +148,7 @@ FROM basic.pokemon
 - 강의 수강 화면 캡처
 - 문제 풀이 정답 화면 캡처
 - SQL 실행 결과 화면 캡처
-
+![alt text](image-17.png)
 ---
 
 # 3️⃣ 확인 문제
