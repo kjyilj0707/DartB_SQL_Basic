@@ -161,7 +161,7 @@ ORDER BY pokemon_cnt DESC
 - 복습 문제 정답 화면 캡처
 - SQL 실행 결과 화면 캡처
 - 전체 개념 정리 노트 캡처
-
+! [alt text](image-24.png)  
 ---
 
 # 3️⃣ 복습 문제
